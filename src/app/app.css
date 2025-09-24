@@ -1,0 +1,54 @@
+@reference 'tailwindcss';
+:host {
+  display: flex;
+}
+
+#privacy {
+  /*noinspection CssInvalidPropertyValue,CssInvalidPseudoSelector*/
+  min-inline-size: 16ch;
+  appearance: base-select;
+
+  &::picker(select) {
+    appearance: base-select;
+  }
+
+  &::picker(select) {
+    border-radius: var(--radius-md);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-gray-300);
+    @apply shadow;
+  }
+
+  selectedcontent {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  option {
+    @apply p-2;
+
+    &::checkmark {
+      @apply absolute end-2;
+    }
+  }
+
+  option:focus {
+    @apply outline-none bg-gray-200;
+  }
+}
+
+.Archived {
+  @apply bg-gray-200;
+}
+
+.Public {
+  @apply bg-green-300;
+}
+
+.Private {
+  @apply bg-red-300;
+}
+.edit-mode {
+  @apply bg-gray-50;
+}

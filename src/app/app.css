@@ -6,12 +6,15 @@
 #privacy {
   /*noinspection CssInvalidPropertyValue,CssInvalidPseudoSelector*/
   min-inline-size: 16ch;
+  /*noinspection CssInvalidPropertyValue*/
   appearance: base-select;
-
+  /*noinspection CssInvalidPseudoSelector*/
   &::picker(select) {
+    /*noinspection CssInvalidPropertyValue*/
     appearance: base-select;
   }
 
+  /*noinspection CssInvalidPseudoSelector*/
   &::picker(select) {
     border-radius: var(--radius-md);
     border-style: solid;
@@ -27,7 +30,7 @@
 
   option {
     @apply p-2;
-
+    /*noinspection CssInvalidPseudoSelector*/
     &::checkmark {
       @apply absolute end-2;
     }

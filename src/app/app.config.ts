@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideAppInitializer(() => {
       const lookupService = inject(LookupService)
-      return forkJoin([lookupService.load()]).pipe(catchError(err => of()))
+      return forkJoin([lookupService.load()]).pipe(catchError(() => of()))
     })
 
   ]

@@ -55,3 +55,23 @@
 .edit-mode {
   @apply bg-gray-50;
 }
+
+.enter {
+  background-color: red;
+  animation: fadeIn 2s;
+}
+.leave {
+  animation: fadeOut 2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}

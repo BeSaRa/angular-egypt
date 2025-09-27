@@ -29,12 +29,19 @@
             d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
         </svg>
       </button>
+      <button (click)="save()" id="cancel-edit"
+              class="cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mt-4">
+        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+          <path
+            d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+        </svg>
+      </button>
     </div>
   </div>
   <span class="text-gray-500 text-xs">click <code class="bg-gray-600 text-white rounded-md px-1">Enter</code> to add/update todo </span>
   <ul id="todo-container" class="[&>li]:border-b-[1px] [&>li]:border-gray-200 [&>li:last-child]:border-none">
-    @for (todo of todos(); track todo.id) {
-      <li [class.edit-mode]="inEditMode(todo)" class="py-3 flex justify-between">
+    @for (todo of todos(); track $index) {
+      <li animate.leave="leave" animate.enter="enter" [class.edit-mode]="inEditMode(todo)" class="py-3 flex justify-between">
         <label class="flex gap-2 items-center cursor-pointer">
           <input [disabled]="inEditMode(todo)" class="size-6 focus:outline-blue-500 accent-cyan-600 peer"
                  type="checkbox">

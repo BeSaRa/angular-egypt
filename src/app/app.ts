@@ -43,6 +43,7 @@ export class App implements OnInit {
 
 
   ngOnInit(): void {
+    console.log('ngOnInit');
     this.todoService.load().subscribe(todos => this.todos.set(todos))
   }
 
@@ -93,7 +94,6 @@ export class App implements OnInit {
 
     const todo = this.form.value as TodoContract;
     const saveOperation = this.editItem ? this.todoService.update(todo) : this.todoService.create(todo)
-
     saveOperation.subscribe(() => {
       swal(this.editItem ? 'Saved Successfully !!' : 'Created Successfully !!', '', 'success').then()
     })

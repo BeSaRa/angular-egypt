@@ -3,16 +3,18 @@
   <div [formGroup]="form" class="flex gap-4 items-center">
     <label for="todo" class="flex-auto flex flex-col">
       <span>Title:</span>
-      <input (keydown.enter)="save()" formControlName="title" type="text" id="todo"
+      <input formControlName="title" type="text" id="todo"
              class="border-2 border-gray-300 rounded-lg p-2 mb-2 focus:outline-none focus:border-blue-500">
     </label>
     <label for="privacy" class="flex flex-col">
       <span>Privacy:</span>
-      <select (keydown.enter)="save()" formControlName="lookupId" id="privacy"
+      <select formControlName="lookupId" id="privacy"
               class="border-2 border-gray-300 rounded-lg p-2 mb-2 focus:outline-none focus:border-blue-500">
-        <button>@if (true) {
-          <selectedcontent></selectedcontent>
-        }</button>
+        <button>
+          @if (true) {
+            <selectedcontent></selectedcontent>
+          }
+        </button>
         @for (lookup of lookups(); track lookup.id) {
           <option [value]="lookup.id">
             <ng-container [ngTemplateOutlet]="lookupName(lookup.name)"></ng-container>
@@ -40,7 +42,7 @@
   </div>
   <span class="text-gray-500 text-xs">click <code class="bg-gray-600 text-white rounded-md px-1">Enter</code> to add/update todo </span>
   <ul id="todo-container" class="[&>li]:border-b-[1px] [&>li]:border-gray-200 [&>li:last-child]:border-none">
-    @for (todo of todos(); track $index) {
+    @for (todo of todos(); track todo.id) {
       <li animate.leave="leave" animate.enter="enter" [class.edit-mode]="inEditMode(todo)" class="py-3 flex justify-between">
         <label class="flex gap-2 items-center cursor-pointer">
           <input [disabled]="inEditMode(todo)" class="size-6 focus:outline-blue-500 accent-cyan-600 peer"

@@ -6,7 +6,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgTemplateOutlet } from '@angular/common';
 import swal from 'sweetalert';
 
-
 @Component({
   selector: 'app-root',
   imports: [
@@ -94,8 +93,9 @@ export class App implements OnInit {
 
     const todo = this.form.value as TodoContract;
     const saveOperation = this.editItem ? this.todoService.update(todo) : this.todoService.create(todo)
-    saveOperation.subscribe(() => {
+    saveOperation.subscribe((todo) => {
       swal(this.editItem ? 'Saved Successfully !!' : 'Created Successfully !!', '', 'success').then()
+      this.todos.update(todos => [...todos, todo])
     })
   }
 

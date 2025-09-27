@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular-egypt": "node dist/angular-egypt/server/server.mjs",
-    "json": "npx json-server public/db.json"
+    "json": "npx json-server db.json"
   },
   "private": true,
   "dependencies": {

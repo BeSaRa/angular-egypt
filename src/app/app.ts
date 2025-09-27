@@ -24,6 +24,7 @@ export class App implements OnInit {
   todos = signal<TodoContract[]>([])
   lookups = inject(LookupService).lookups
   lookupMap = inject(LookupService).lookupsMap
+  addMode = signal(false)
   fb = inject(FormBuilder)
   form = this.fb.nonNullable.group({
     id: [''],
@@ -42,7 +43,6 @@ export class App implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.todoService.load().subscribe(todos => this.todos.set(todos))
   }
 
@@ -90,16 +90,19 @@ export class App implements OnInit {
       swal('Please fill all the fields !!', 'Title, Privacy', 'error').then()
       return;
     }
-
+    this.addMode.set(true)
     const todo = this.form.value as TodoContract;
     const saveOperation = this.editItem ? this.todoService.update(todo) : this.todoService.create(todo)
     saveOperation.subscribe((todo) => {
-      swal(this.editItem ? 'Saved Successfully !!' : 'Created Successfully !!', '', 'success').then()
       this.todos.update(todos => [...todos, todo])
+      swal(this.editItem ? 'Saved Successfully !!' : 'Created Successfully !!', '', 'success').then(() => {
+        this.addMode.set(false)
+      })
     })
   }
 
   isEmpty() {
     return this.form.value.title?.length === 0 && this.form.value.lookupId?.length === 0
   }
+
 }

@@ -43,7 +43,8 @@
   <span class="text-gray-500 text-xs">click <code class="bg-gray-600 text-white rounded-md px-1">Enter</code> to add/update todo </span>
   <ul id="todo-container" class="[&>li]:border-b-[1px] [&>li]:border-gray-200 [&>li:last-child]:border-none">
     @for (todo of todos(); track todo.id) {
-      <li animate.leave="leave" animate.enter="enter" [class.edit-mode]="inEditMode(todo)" class="py-3 flex justify-between">
+      <li animate.leave="leave" [animate.enter]="addMode() ? 'enter-now' : 'enter'" [style.--item-index]="$index" [class.edit-mode]="inEditMode(todo)"
+          class="py-3 flex justify-between">
         <label class="flex gap-2 items-center cursor-pointer">
           <input [disabled]="inEditMode(todo)" class="size-6 focus:outline-blue-500 accent-cyan-600 peer"
                  type="checkbox">

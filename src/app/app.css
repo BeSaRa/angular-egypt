@@ -55,10 +55,11 @@
 .edit-mode {
   @apply bg-gray-50;
 }
-
+.enter-now {
+  animation: fadeIn 500ms ease-out backwards;
+}
 .enter {
-  background-color: red;
-  animation: fadeIn 2s;
+  animation: fadeIn 500ms ease-out calc(var(--item-index) * 100ms) backwards;
 }
 .leave {
   animation: fadeOut 2s;
@@ -67,6 +68,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
 }
 
